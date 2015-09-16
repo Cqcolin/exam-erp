@@ -17,13 +17,13 @@
 * 设计一个FIFO类，用于计算库存结余，包括数量和成本。输入为一组出入库记录，输出为这一组记录每笔发生时的成本单价，数量结余与成本结余。
 * 类的属性（字段）不限，请自行设计，包括关键属性即可
 关键属性举例：
-BillNumber      单据号
-SKUCode	        SKU编码
-Direction 	入库or出库
-Qty		本单出入库数量
-UnitPrice	成本单价
-BalanceQty	当前结余数量
-BalanceAmount   当前结余成本金额
+> BillNumber      单据号
+> SKUCode	        SKU编码
+> Direction 	入库or出库
+> Qty		本单出入库数量
+> UnitPrice	成本单价
+> BalanceQty	当前结余数量
+> BalanceAmount   当前结余成本金额
 
 ## 测试
 1.编写一个单元测试，用于输入一组数据，调用FIFO类输出结果
