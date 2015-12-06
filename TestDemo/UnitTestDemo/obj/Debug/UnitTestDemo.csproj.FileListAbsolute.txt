@@ -1,0 +1,7 @@
+E:\visual studio 2013\Projects\TestDemo\UnitTestDemo\bin\Debug\UnitTestDemo.dll
+E:\visual studio 2013\Projects\TestDemo\UnitTestDemo\bin\Debug\TestDemo.dll
+E:\visual studio 2013\Projects\TestDemo\UnitTestDemo\bin\Debug\TestDemo.pdb
+E:\visual studio 2013\Projects\TestDemo\UnitTestDemo\obj\Debug\UnitTestDemo.csprojResolveAssemblyReference.cache
+E:\visual studio 2013\Projects\TestDemo\UnitTestDemo\obj\Debug\UnitTestDemo.dll
+E:\visual studio 2013\Projects\TestDemo\UnitTestDemo\obj\Debug\UnitTestDemo.pdb
+E:\visual studio 2013\Projects\TestDemo\UnitTestDemo\bin\Debug\UnitTestDemo.pdb

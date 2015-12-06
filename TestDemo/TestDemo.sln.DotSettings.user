@@ -1,0 +1,18 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/CodeStyle/LiveTemplatesUseVar/PreferVar/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=04FC01EFF13542898D174CD4BAA58733/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=04FC01EFF13542898D174CD4BAA58733/Name/@EntryValue">TestMethod #3</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=04FC01EFF13542898D174CD4BAA58733/TrackActiveElement/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=04FC01EFF13542898D174CD4BAA58733/XmlSerializedElements/@EntryValue">&lt;Session&gt;&lt;Elements&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:UnitTestDemo.UnitTest1" type="MsTestTestClassElement" TypeName="UnitTestDemo.UnitTest1" Project="DD96CA20-52A5-4A84-9DD8-E7482328A746" /&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:UnitTestDemo.UnitTest1.TestMethod" ParentId="MsTest:UnitTestDemo.UnitTest1" type="MsTestTestMethodElement" MethodName="TestMethod" TypeName="UnitTestDemo.UnitTest1" Project="DD96CA20-52A5-4A84-9DD8-E7482328A746" /&gt;&lt;/Elements&gt;&lt;/Session&gt;</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=0F8A255DA97443389EDF0043A99EDE5D/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=0F8A255DA97443389EDF0043A99EDE5D/Name/@EntryValue">TestMethod #2</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=0F8A255DA97443389EDF0043A99EDE5D/TrackActiveElement/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=0F8A255DA97443389EDF0043A99EDE5D/XmlSerializedElements/@EntryValue">&lt;Session&gt;&lt;Elements /&gt;&lt;/Session&gt;</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=2F318920FDFF47AD99C2FDC5A8FD3852/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=2F318920FDFF47AD99C2FDC5A8FD3852/Name/@EntryValue">UnitTest1</s:String>
+	
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=2F318920FDFF47AD99C2FDC5A8FD3852/XmlSerializedElements/@EntryValue">&lt;Session&gt;&lt;Elements /&gt;&lt;/Session&gt;</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=A9322C71DC4243568A889D984C889E45/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=A9322C71DC4243568A889D984C889E45/Name/@EntryValue">TestMethod</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=A9322C71DC4243568A889D984C889E45/TrackActiveElement/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=A9322C71DC4243568A889D984C889E45/XmlSerializedElements/@EntryValue">&lt;Session&gt;&lt;Elements /&gt;&lt;/Session&gt;</s:String></wpf:ResourceDictionary>
