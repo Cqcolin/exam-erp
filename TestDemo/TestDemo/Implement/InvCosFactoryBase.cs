@@ -51,7 +51,22 @@ namespace TestDemo
             }
         }
 
+
+        public virtual decimal GetSkuPrice(List<SkuInfo> invs, SkuInfo sku)
+        {
+            var inv = invs.FirstOrDefault(s => s.SkuCode.Equals(sku.SkuCode) && s.Amount > 0);
+            return inv == null ? 0 : inv.Price;
+        }
+
+        public int GetSkuAmount(List<SkuInfo> invs, SkuInfo sku)
+        {
+            return invs.Where(s => s.SkuCode.Equals(sku.SkuCode) && s.Amount > 0).Sum(s => s.Amount);
+        }
+
+
         protected abstract void Out(List<SkuInfo> invs, SkuInfo sku);
+
+
 
     }
 }

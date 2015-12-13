@@ -61,10 +61,18 @@ namespace TestDemo
             }
         }
 
+        public override decimal GetSkuPrice(List<SkuInfo> invs, SkuInfo sku)
+        {
+            var inv = invs.OrderBy(s => s.InInvTime).FirstOrDefault(s => s.SkuCode.Equals(sku.SkuCode) && s.Amount > 0);
+
+            return inv == null ? 0 : inv.Price;
+
+        }
+
         protected override void Out(List<SkuInfo> invs, SkuInfo sku)
         {
             SkuInfo outSku = null;
-            var curInvs = invs.Where(o => o.SkuCode.Equals(sku.SkuCode) && o.Amount > 0);
+            var curInvs = invs.OrderBy(s => s.InInvTime).Where(o => o.SkuCode.Equals(sku.SkuCode) && o.Amount > 0);
 
             //var sameBathchInvs = curInvs.Where(o => o.BatchNo.Equals(sku.BatchNo));
             //outSku = sameBathchInvs.FirstOrDefault();

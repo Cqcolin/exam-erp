@@ -22,6 +22,10 @@ namespace TestDemo
         void GetInvCos(List<SkuInfo> invs, SkuInfo sku);
 
         void DealBills(List<SkuInfo> invs, Bill bill);
+
+        decimal GetSkuPrice(List<SkuInfo> invs,SkuInfo sku );
+
+        int GetSkuAmount(List<SkuInfo> invs, SkuInfo sku);
     }
 
 }

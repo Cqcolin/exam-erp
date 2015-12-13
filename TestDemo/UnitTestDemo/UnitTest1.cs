@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestDemo;
 
@@ -16,16 +17,26 @@ namespace UnitTestDemo
             //sku001    12    
             //sku002    10
             //sku003     0
-            SkuInv inv = new SkuInv();
+            Biz biz = new Biz();
+
             IInvCosFactory invCosFactory = InvCosFactory.GetFIFOCalFactory();
-            Console.WriteLine("{0}", inv.GetInvCos(invCosFactory));
-            inv.GetInvCos(invCosFactory, new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString() });
+            biz.SetCosFactory(invCosFactory);
+            Console.WriteLine("{0}", biz.GetInvCos());
 
             //sku003    +10
-            inv.AddInv(new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString(), Amount = 10, Price = 2 });
-            inv.GetInvCos(invCosFactory, new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString() });
+            biz.AddInv(new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString(), Amount = 10, Price = 2, InInvTime = new DateTime(2015, 2, 2) });
 
-            inv.DealBill(invCosFactory, new List<Bill>()
+            Assert.AreEqual(10, biz.GetSkuAmount(SkuCodeEnum.sku003.ToString()));
+            Assert.AreEqual(2, biz.GetSkuPrice(SkuCodeEnum.sku003.ToString()));
+
+            biz.GetInvCos(new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString() });
+
+            #region Bill1
+
+
+            Console.WriteLine("***********************  Begin1  ************************\n");
+
+            biz.DealBill(new List<Bill>()
             {
                 new Bill("bill001",DirectionEnum.In,new List<SkuInfo>()
                 {
@@ -33,24 +44,58 @@ namespace UnitTestDemo
                     {
                         SkuCode =  SkuCodeEnum.sku003.ToString(),
                         Amount = 10,
+                        Price = 12,
+                        BatchNo = BatchNoEnum.s11111.ToString(),
+                        InInvTime = new DateTime(2015,12,12)
+                    },
+                     new SkuInfo()
+                    {
+                        SkuCode =  SkuCodeEnum.sku003.ToString(),
+                        Amount = 10,
+                        Price = 1,
+                        BatchNo = BatchNoEnum.s11111.ToString(),
+                        InInvTime = new DateTime(2015,1,1)
+                    }, 
+                    new SkuInfo()
+                    {
+                        SkuCode =  SkuCodeEnum.sku003.ToString(),
+                        Amount = 10,
+                        Price = 5,
+                        BatchNo = BatchNoEnum.s11111.ToString(),
+                        InInvTime = new DateTime(2015,5,5)
+                    },
+                     new SkuInfo()
+                    {
+                        SkuCode =  SkuCodeEnum.sku003.ToString(),
+                        Amount = 10,
                         Price = 3,
-                        BatchNo = BatchNoEnum.s11111.ToString()
+                        BatchNo = BatchNoEnum.s11111.ToString(),
+                        InInvTime = new DateTime(2015,3,3)
                     },
                     new SkuInfo()
                     {
                         SkuCode =  SkuCodeEnum.sku001.ToString(),
                         Amount = 10,
-                        Price = 3,
-                        BatchNo = BatchNoEnum.s11111.ToString()
+                        Price = 1201,
+                        BatchNo = BatchNoEnum.s11111.ToString(),
+                        InInvTime = new DateTime(2015,12,01)
+                    },
+                     new SkuInfo()
+                    {
+                        SkuCode =  SkuCodeEnum.sku001.ToString(),
+                        Amount = 10,
+                        Price = 1203,
+                        BatchNo = BatchNoEnum.s11111.ToString(),
+                        InInvTime = new DateTime(2015,12,03)
                     },
                     new SkuInfo()
                     {
                         SkuCode =  SkuCodeEnum.sku001.ToString(),
                         Amount = 10,
-                        Price = 3,
-                        BatchNo = BatchNoEnum.s11111.ToString()
+                        Price = 1202,
+                        BatchNo = BatchNoEnum.s11111.ToString(),
+                        InInvTime = new DateTime(2015,12,02)
                     },
-                    
                     new SkuInfo()
                     {
                         SkuCode =  SkuCodeEnum.sku002.ToString(),
@@ -60,10 +105,30 @@ namespace UnitTestDemo
                     }
                 })            
             });
-            inv.GetInvCos(invCosFactory, new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString() });
-            inv.GetInvCos(invCosFactory, new SkuInfo() { SkuCode = SkuCodeEnum.sku001.ToString() });
+            //sku003 库存数量
+            Assert.AreEqual(50, biz.GetSkuAmount(SkuCodeEnum.sku003.ToString()));
+            //价格。
+            Assert.AreEqual(1, biz.GetSkuPrice(SkuCodeEnum.sku003.ToString()));
 
-            inv.DealBill(invCosFactory, new List<Bill>()
+            //sku001 库存数量
+            Assert.AreEqual(42, biz.GetSkuAmount(SkuCodeEnum.sku001.ToString()));
+            //价格。
+            Assert.AreEqual(4, biz.GetSkuPrice(SkuCodeEnum.sku001.ToString()));
+
+
+            Console.WriteLine("***********************  End1  ************************\n");
+
+            #endregion
+
+
+            biz.GetInvCos(new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString() });
+            biz.GetInvCos(new SkuInfo() { SkuCode = SkuCodeEnum.sku001.ToString() });
+
+
+            #region Bill2
+
+            Console.WriteLine("***********************  Begin2  ************************\n");
+            biz.DealBill(new List<Bill>()
             {
                 new Bill("bill002",DirectionEnum.Out,new List<SkuInfo>()
                 {
@@ -71,14 +136,12 @@ namespace UnitTestDemo
                     {
                         SkuCode =  SkuCodeEnum.sku003.ToString(),
                         Amount = 11,
-                        Price = 3,
                         BatchNo = BatchNoEnum.s11111.ToString()
                     },
                     new SkuInfo()
                     {
                         SkuCode = SkuCodeEnum.sku001.ToString(),
                         Amount = 4,
-                        Price = 2,
                         BatchNo = BatchNoEnum.s22222.ToString()
                     }
                 })   ,
@@ -87,68 +150,26 @@ namespace UnitTestDemo
                     new SkuInfo()
                     {
                         SkuCode =  SkuCodeEnum.sku003.ToString(),
-                        Amount = 5,
-                        Price = 3,
+                        Amount = 15,
                         BatchNo = BatchNoEnum.s11111.ToString()
                     }
                 })       
             });
-            inv.GetInvCos(invCosFactory, new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString() });
+
+            //sku003 库存数量
+            Assert.AreEqual(24, biz.GetSkuAmount(SkuCodeEnum.sku003.ToString()));
+            //价格。
+            Assert.AreEqual(3, biz.GetSkuPrice(SkuCodeEnum.sku003.ToString()));
+
+
+            Console.WriteLine("***********************  end2  ************************\n");
+
+            #endregion
+
+
+            biz.GetInvCos(new SkuInfo() { SkuCode = SkuCodeEnum.sku003.ToString() });
 
         }
-
-        //[TestMethod]
-        //public void TestMethod1()
-        //{
-        //    DateTime now = DateTime.Now;
-        //    List<SkuInfo> skus = new List<SkuInfo>()
-        //    {
-        //        new SkuInfo(){ID = 2,Name = "WCF 高级编程",Amount = 1,Price = 40,InInvTime = now.AddDays(-30)},
-        //        new SkuInfo(){ID = 2,Name = "WCF 高级编程",Amount = 1,Price = 30,InInvTime = now.AddDays(-20)},
-        //        new SkuInfo(){ID = 1,Name = "ASP.NET从入门到精通",Amount = 2,Price = 50,InInvTime = now.AddDays(-30)},
-        //        new SkuInfo(){ID = 1,Name = "ASP.NET从入门到精通",Amount = 1,Price = 50,InInvTime =now.AddDays(-30)},
-        //        new SkuInfo(){ID = 1,Name = "ASP.NET从入门到精通",Amount = 3,Price = 80,InInvTime =now.AddDays(-20)},
-        //        new SkuInfo(){ID = 1,Name = "ASP.NET从入门到精通",Amount = 2,Price = 50,InInvTime = now.AddDays(-30)},
-        //        new SkuInfo(){ID = 1,Name = "ASP.NET从入门到精通",Amount = 3,Price = 55,InInvTime =now.AddDays(-10)}
-        //    };
-        //    IInvCosFactory invCos;
-        //    invCos = InvCosFactory.GetIndividualCalFactory();
-
-        //    // 70+240+165+250 = 725
-        //    Console.WriteLine(string.Format("{0}:{1}\n", "个别计算", invCos.GetInvCos(skus)));
-        //    Console.WriteLine(string.Format("-------------------------------------------\n"));
-        //    //80+550 =630
-        //    invCos = InvCosFactory.GetFIFOCalFactory();
-        //    Console.WriteLine(string.Format("{0}:{1}\n", "先进先出", invCos.GetInvCos(skus)));
-        //    Console.WriteLine(string.Format("-------------------------------------------\n"));
-
-        //    //60+605 = 665
-        //    invCos = InvCosFactory.GetLIFOCalFactory();
-        //    Console.WriteLine(string.Format("{0}:{1}\n", "后进先出", invCos.GetInvCos(skus)));
-        //    Console.WriteLine(string.Format("-------------------------------------------\n"));
-
-        //    //40+
-        //    invCos = InvCosFactory.GetWeightedAverageCalFactoryy();
-        //    Console.WriteLine(string.Format("{0}:{1}\n", "加权平均", invCos.GetInvCos(skus)));
-        //    Console.WriteLine(string.Format("-------------------------------------------\n"));
-
-
-        //    invCos = InvCosFactory.GetMovingWeightedAverageCalFactory();
-        //    Console.WriteLine(string.Format("{0}:{1}\n", "移动加权平均", invCos.GetInvCos(skus)));
-        //    Console.WriteLine(string.Format("-------------------------------------------\n"));
-
-
-        //    invCos = InvCosFactory.GetFIFOMovingWeightedAverageCalFactory();
-        //    Console.WriteLine(string.Format("{0}:{1}\n", "移动加权平均(FIFO)", invCos.GetInvCos(skus)));
-        //    Console.WriteLine(string.Format("-------------------------------------------\n"));
-
-
-        //    invCos = InvCosFactory.GetLIFOMovingWeightedAverageCalFactory();
-        //    Console.WriteLine(string.Format("{0}:{1}\n", "移动加权平均(LIFO)", invCos.GetInvCos(skus)));
-        //    Console.WriteLine(string.Format("-------------------------------------------\n"));
-
-
-        //}
-
+     
     }
 }

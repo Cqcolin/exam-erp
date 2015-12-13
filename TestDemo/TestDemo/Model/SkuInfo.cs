@@ -32,11 +32,11 @@ namespace TestDemo
 
         public static SkuInfo CreateSkuB(int amount, decimal price, BatchNoEnum batchno)
         {
-            return new SkuInfo() { ID = 2, SkuCode = SkuCodeEnum.sku002.ToString(), Amount = amount, BatchNo = batchno.ToString(), Price = price,Name = "B物料"};
+            return new SkuInfo() { ID = 2, SkuCode = SkuCodeEnum.sku002.ToString(), Amount = amount, BatchNo = batchno.ToString(), Price = price, Name = "B物料"};
         }
         public static SkuInfo CreateSkuC(int amount, decimal price, BatchNoEnum batchno)
         {
-            return new SkuInfo() { ID = 3, SkuCode = SkuCodeEnum.sku003.ToString(), Amount = amount, BatchNo = batchno.ToString(), Price = price,Name = "C物料"};
+            return new SkuInfo() { ID = 3, SkuCode = SkuCodeEnum.sku003.ToString(), Amount = amount, BatchNo = batchno.ToString(), Price = price, Name = "C物料" };
         }
 
     }
